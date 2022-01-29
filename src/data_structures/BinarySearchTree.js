@@ -11,6 +11,12 @@ class BinarySearchTree {
         this.root = null;
     }
 
+    // TODO: 
+    checkIfBalanced() {
+
+    }
+
+
     insert(data) {
         let node = this.root;
 
@@ -92,6 +98,7 @@ class BinarySearchTree {
     // yet to implement
     removeNode() {
 
+
     }
 }
 
@@ -108,7 +115,7 @@ bst.insert(9);
 bst.print();
 
 console.log('Min Value in BST => ', bst.findMin());
-console.log('Min Value in BST => ',bst.findMax());
+console.log('Min Value in BST => ', bst.findMax());
 
 
 
