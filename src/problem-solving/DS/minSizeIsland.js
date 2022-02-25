@@ -5,7 +5,7 @@ An island is vertically or horizontaly connected region of land
 */
 
 const grid = [
-    ['W', 'L', 'W', 'W', 'L'],
+    ['W', 'L', 'W', 'W', 'W'],
     ['W', 'L', 'W', 'W', 'W'],
     ['W', 'W', 'W', 'L', 'W'],
     ['W', 'W', 'L', 'L', 'W'],

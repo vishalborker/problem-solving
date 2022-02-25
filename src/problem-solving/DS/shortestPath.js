@@ -19,9 +19,17 @@ const edges = [
     ['w', 'v'],
 ];
 
+//       1 
+//     /   \
+//   2       4
+//    \    /
+//      3 
 
 const shortestPath = (edges, src, dest) => {
     const graph = buildGraph(edges);
+
+    // console.log(graph);
+    // process.exit();
     const visited = new Set([src]);
     const queue = [{ data: src, length: 0 }];
     

@@ -16,8 +16,6 @@ const canSum = (targetSum, numbers, memo = {}) => {
     return memo[targetSum];
 };
 
-
-
 console.log(canSum(7, [7, 3, 4, 2]));
 console.log(canSum(7, [2, 4]));
 console.log(canSum(21, [0, 0]));

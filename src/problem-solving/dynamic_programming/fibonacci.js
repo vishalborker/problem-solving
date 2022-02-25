@@ -37,6 +37,4 @@ console.log(fibonacci(5));
 console.log(fibonacci(6));
 console.log(fibonacci(7));
 console.log(fibonacci(10));
-console.log(fibonacci(20));
-console.log(fibonacci(30));
-console.log(fibonacci(40));
+console.log(fibonacci(50));

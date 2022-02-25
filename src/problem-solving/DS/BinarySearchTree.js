@@ -16,7 +16,7 @@ class BinarySearchTree {
 
     }
 
-
+    
     insert(data) {
         let node = this.root;
 
@@ -116,8 +116,6 @@ bst.print();
 
 console.log('Min Value in BST => ', bst.findMin());
 console.log('Min Value in BST => ', bst.findMax());
-
-
 
 console.log(`IsPresent 9 ${bst.isPresent(9)}`);
 console.log(`IsPresent 12 ${bst.isPresent(12)}`);

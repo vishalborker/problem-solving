@@ -33,7 +33,18 @@ const grid = [
     [2, 2, 4, 1],
     [5, 0, 2, 3],
     [0, 6, 1, 2],
-]
+];
+
+const grid2 = [
+    [1, 3, 2],
+    [2, 1, 1], 
+];
+
+const grid3 = [
+    [10, 20, 0],
+    [30, 10, 100],
+    [10, 10, 10]
+];
 
 const goldMine = (grid) => {
     let maxGoldCollected = grid[0][0];
@@ -41,9 +52,9 @@ const goldMine = (grid) => {
     // console.log(grid.length, grid[0].length);
     for(let m = 0; m < grid.length; m++) {
         const visited = new Set();
-        const currentGold = exploreGold(grid, m, 0, visited);
+        const currentGold = calculateGold(grid, m, 0, visited);
 
-        // console.log({currentGold});
+        console.log('for row = ', m, 'collectedGold is', {currentGold});
         if (currentGold > maxGoldCollected) {
             maxGoldCollected = currentGold;
         }
@@ -51,27 +62,24 @@ const goldMine = (grid) => {
     return maxGoldCollected;
 }
 
-const exploreGold = (grid, row, col, visited) => {
+const calculateGold = (grid, row, col, visited) => {
     const rowInbounds = 0 <= row && row < grid.length;
     const colInbounds = 0 <= col && col < grid[0].length;
-    
-    if (!rowInbounds || !colInbounds) return 0;
-    // const position = row + ',' + col
-    // if (visited.has(position)) return 0;
 
-    // visited.add(position);
+    if (!rowInbounds || !colInbounds) return 0;
+
     let currentSpotGold = grid[row][col];
 
-    console.log({currentSpotGold}, {row}, {col})
+    rightGold = calculateGold(grid, row, col + 1, visited); // go right ->
+    rightUpGold = calculateGold(grid, row - 1, col + 1, visited); // go right up /
+    rightDown = calculateGold(grid, row + 1, col + 1, visited); // go right down \
 
-    rightGold = exploreGold(grid, row, col + 1, visited); // go right ->
-    rightUpGold = exploreGold(grid, row - 1, col + 1, visited); // go right up /
-    rightDown = exploreGold(grid, row + 1, col + 1, visited); // go right down \
-
-    console.log({currentSpotGold}, {rightGold}, {rightUpGold}, {rightDown});
+    console.log({rightGold}, {rightUpGold}, {rightDown}, {currentSpotGold}, {row}, {col});
     maxGold = currentSpotGold + Math.max(rightGold, Math.max(rightUpGold, rightDown));
-    console.log({maxGold})
+    
     return maxGold;
 }
 
-console.log(goldMine(grid));
+// console.log(goldMine(grid));
+console.log(goldMine(grid3));
+// console.log(goldMine(grid3));

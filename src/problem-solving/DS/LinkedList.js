@@ -79,7 +79,7 @@ class LinkedList {
     }
 
     getAt(index) {
-        if (this.isIndexOutOfRange()) {
+        if (this.isIndexOutOfRange(index)) {
             return;
         }
         let current = this.head;
@@ -120,6 +120,8 @@ class LinkedList {
         return index > 0 && index > this.size;
     }
 
+    // index 2 remove
+   // 1 -> 2 -> (3) -> 4
     removeAt(index) {
         if (index === this.size) {
             this.removeLast();
@@ -140,6 +142,7 @@ class LinkedList {
         let count = 0;
 
         while(count < index) {
+            // 3
             previous = current;
             count++;
             if (current && current.next) {
@@ -157,30 +160,74 @@ class LinkedList {
         this.head = null;
         this.size = 0;
     }
+
+    reverse() {
+        const arr = [];
+        let current = this.head;
+        while(current !=null) {
+            arr.push(current.data);
+            current = current.next;
+        }
+
+        console.log(arr);
+
+        this.head = null;
+        this.size = 0;
+
+        for(let i=arr.length-1; i>=0; i--) {
+            this.insertLast(arr[i]);
+        }
+        this.printList();
+
+        console.log(JSON.stringify(this.head));
+    }
+
+    reverse2() {
+        let prev = null, current = this.head;
+
+        while(current) {
+            const next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next
+
+        }
+        return prev;
+    }
 }
 
 const linkedList = new LinkedList();
 linkedList.insertFirst(100);
 
+console.log(linkedList.head);
+
 linkedList.insertLast(200);
 linkedList.insertLast(300);
-linkedList.insertLast(400);
-
-linkedList.insertLast(800);
 
 linkedList.insertAt(0, 700);
-linkedList.insertAt(0, 900);
+
+// 5
+// 5 -> 1 -> 2 -> 3
+
+// linkedList.insertLast(400);
+
+// linkedList.insertLast(800);
+
+// linkedList.insertAt(0, 700);
+// linkedList.insertAt(0, 900);
 
 
 
 linkedList.printList();
 
-linkedList.removeFirst();
+// linkedList.removeFirst();
 
-linkedList.printList();
-linkedList.removeLast();
-linkedList.printList();
+// linkedList.printList();
+// linkedList.removeLast();
+// linkedList.printList();
 
-linkedList.removeAt(3);
+// linkedList.removeAt(3);
 
-linkedList.printList();
+// linkedList.printList();
+
+console.log(linkedList.reverse2());
