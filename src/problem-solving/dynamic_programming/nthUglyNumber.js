@@ -1,10 +1,46 @@
+function maxDivide(a , b) {
+    while (a % b == 0)
+        a = a / b;
+    return a;
+}
+
 /*
-    Ugly numbers are numbers whose only prime factors are 2, 3 or 5. 
-    The sequence 1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, … shows the first 11 ugly numbers. By convention, 1 is included. 
-    Given a number n, the task is to find n’th Ugly number.
+ * Function to check if a number is ugly or not
+ */
+function isUgly(no) {
+    console.log('Checking for =>', no);
+    no = maxDivide(no, 2);
+    console.log('After max divide by 2 =>', no);
+    no = maxDivide(no, 3);
+    console.log('After max divide by 3 =>', no);
 
+    no = maxDivide(no, 5);
+    console.log('After max divide by 5 =>', no);
 
-                    
-        1          2          3         5 
-     2  3  5      2 3  5     2 3 5     2 3 5
-*/
+    return (no == 1) ? 1 : 0;
+}
+
+/*
+ * Function to get the nth ugly number
+ */
+function getNthUglyNo(n)
+{
+    var i = 1;
+
+    // ugly number count
+    var count = 1;
+
+    // check for all integers
+    // until count becomes n
+    while (n > count)
+    {
+        i++;
+        if (isUgly(i) == 1)
+            count++;
+    }
+    return i;
+}
+
+/* Driver Code */   
+var no = getNthUglyNo(10);
+console.log(no);

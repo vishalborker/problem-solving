@@ -20,11 +20,7 @@ const bestSum = (targetSum, numbers, memo = {}) => {
     return memo[targetSum];
 };
 
-
-
-
 console.log(bestSum(7, [2, 3, 4]));
 console.log(bestSum(7, [2, 4, 1]));
 console.log(bestSum(300, [7, 14]));
-
 console.log(bestSum(300, [25]));
