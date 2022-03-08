@@ -12,8 +12,24 @@ class BinarySearchTree {
     }
 
     // TODO: 
-    checkIfBalanced() {
+    isSymmetric() {
+        let head = this.root;
+        if (head == null) {
+            return true;
+        }
+        return this.checkSymmetric(head.left, head.right);
+    }
 
+    checkSymmetric(root1, root2) {
+        if (root1 == null && root2 == null) {
+            return true;
+        } else if (root1 == null || root2 == null) {
+            return false;
+        } else if (root1.data != root2.data) {
+            return false;
+        }
+    
+        return this.checkSymmetric(root1.left, root2.right) && this.checkSymmetric(root1.right, root2.left);
     }
 
     
@@ -57,6 +73,9 @@ class BinarySearchTree {
 
     findMax() {
         let current = this.root;
+        if (current == null) {
+            return null;
+        }
         while(current.right) {
             current = current.right;
         }
@@ -65,6 +84,9 @@ class BinarySearchTree {
 
     findMin() {
         let current = this.root;
+        if (current == null) {
+            return null;
+        }
         while(current.left) {
             current = current.left;
         }
@@ -79,16 +101,14 @@ class BinarySearchTree {
             return false;
         }
 
-        while(current) {
+        while(current != null) {
             if (data === current.data) {
                 return true;
             }
 
             if (data < current.data) {
                 current = current.left;
-            }
-
-            if (data > current.data) {
+            } else if (data > current.data) {
                 current = current.right;
             }
         }
@@ -106,11 +126,15 @@ const bst = new BinarySearchTree();
 
 bst.insert(50);
 
-bst.insert(15);
-bst.insert(56);
+// bst.insert(15);
+// bst.insert(56);
 
-bst.insert(25);
-bst.insert(9);
+// bst.insert(25);
+// bst.insert(9);
+
+result = bst.isSymmetric();
+
+console.log({result});
 
 bst.print();
 

@@ -51,7 +51,7 @@ const placeQueen = (board, col, len) => {
 
 const results = [];
 const main = () => {
-    let board = [
+    board = [
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],

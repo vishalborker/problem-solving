@@ -25,3 +25,11 @@ user.getName();
 app.listen(3000, () => {
   console.log('Server is listening at port 3000');
 });
+
+
+for(i=0; i<10; i++) {
+  const random = Math.random() *100;
+  setTimeout(() => {
+    console.log(i);
+  }, random);
+}
