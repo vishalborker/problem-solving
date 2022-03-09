@@ -96,7 +96,10 @@ var removeZeroSumSublists2 = function(head) {
     let runningSum = 0; 
     
     while (curr) {
+        
         runningSum += curr.val;
+
+        console.log({runningSum}, {curr});
         prefixSumMap.set(runningSum, curr);
         curr = curr.next;
     }
@@ -109,7 +112,7 @@ var removeZeroSumSublists2 = function(head) {
     
     while (curr) {
         runningSum += curr.val;
-        console.log({'whatisthis': prefixSumMap.get(runningSum).next});
+        // console.log({'whatisthis': prefixSumMap.get(runningSum).next});
         curr.next = prefixSumMap.get(runningSum).next;
         curr = curr.next; 
     }
@@ -126,7 +129,7 @@ for(let a of arr) {
     current = current.next;
 }
 
-console.log(head.next);
+// console.log(head.next);
 
 var result = removeZeroSumSublists2(head.next);
 console.log({result});
