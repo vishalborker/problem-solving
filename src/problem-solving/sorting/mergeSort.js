@@ -13,8 +13,8 @@ const mergeSort = (arr, low, high) => {
 
 
 const merge = (arr, low, high, mid) => {
-    const temp = [];
     let i = low, j = mid + 1, k = 0;
+    const temp = [];
 
     while(i<=mid && j <=high) {
         if (arr[i] <= arr[j]) {
@@ -38,7 +38,6 @@ const merge = (arr, low, high, mid) => {
     }
 
     
-    console.log({low}, {mid}, {temp}, {arr});
 
     for (i = low; i <=high; i++) {
         arr[i] = temp[i-low];
@@ -47,7 +46,7 @@ const merge = (arr, low, high, mid) => {
     
 }
 
-const arrToBeSorted = [3, 2, 4, 1]; 
+const arrToBeSorted = [12, 81, 51, 67, 23, 66, 78, 91, 15];
 mergeSort(arrToBeSorted, 0, arrToBeSorted.length - 1);
 
 console.log('After Sortitng', arrToBeSorted);

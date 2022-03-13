@@ -120,27 +120,86 @@ class BinarySearchTree {
 
 
     }
+
+    preOrder(current) {
+        if( current == null) {
+            return;
+        }
+        console.log(current.data);
+        this.preOrder(current.left);
+        this.preOrder(current.right);
+    }
+
+    postOrder(current) {
+        if( current == null) {
+            return;
+        }
+        this.postOrder(current.left);
+        this.postOrder(current.right);
+        console.log(current.data);
+    }
+
+    inOrder(current) {
+        if( current == null) {
+            return;
+        }
+        this.inOrder(current.left);
+        console.log(current.data);
+        this.inOrder(current.right);
+    }
 }
 
 const bst = new BinarySearchTree();
 
-bst.insert(50);
+// bst.insert(50);
 
 // bst.insert(15);
 // bst.insert(56);
 
 // bst.insert(25);
 // bst.insert(9);
+// bst.insert(45);
+
+// bst.insert(33);
+// bst.insert(91);
+
+bst.insert(5);
+bst.insert(1);
+bst.insert(2);
+bst.insert(4);
+bst.insert(3);
+bst.insert(12);
+bst.insert(31);
 
 result = bst.isSymmetric();
-
-console.log({result});
-
 bst.print();
 
-console.log('Min Value in BST => ', bst.findMin());
-console.log('Min Value in BST => ', bst.findMax());
+console.log(JSON.stringify(bst.root,null, "\t"))
 
-console.log(`IsPresent 9 ${bst.isPresent(9)}`);
-console.log(`IsPresent 12 ${bst.isPresent(12)}`);
-console.log(`IsPresent 15 ${bst.isPresent(15)}`);
+console.log('\n Printing InOrder \n');
+bst.inOrder(bst.root);
+
+console.log('\n Printing PreOrder \n');
+bst.preOrder(bst.root);
+
+console.log('\n Printing PostOrder \n');
+bst.postOrder(bst.root);
+
+/*
+            5
+       /         \
+      1           12
+         2         \
+                    31
+            \
+             4
+           /
+          3  
+
+*/
+
+// console.log('Min Value in BST => ', bst.findMin());
+// console.log('Min Value in BST => ', bst.findMax());
+// console.log(`IsPresent 9 ${bst.isPresent(9)}`);
+// console.log(`IsPresent 12 ${bst.isPresent(12)}`);
+// console.log(`IsPresent 15 ${bst.isPresent(15)}`);
