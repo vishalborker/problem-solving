@@ -22,8 +22,11 @@ var longestPalindromeInAString = function(str) {
         checkPalindrome(str, start, start);
         checkPalindrome(str, start, start + 1);
     }
-
+    console.log({biggestPalindrom})
     return biggestPalindrom;
 }
+start = performance.now();
+longestPalindromeInAString("uisfdbsisababnninitinjksfksdfabcddcba");
+end = performance.now();
 
-longestPalindromeInAString("abxo8oxbx")
+console.log(end-start);

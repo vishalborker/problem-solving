@@ -23,24 +23,10 @@ Input : mat[][] = {{10, 33, 13, 15},
                   {0, 6, 14, 2}};
 Output : 83
 
-
-
-
 */
 
-const grid = [
-    [1, 3, 1, 5],
-    [2, 2, 4, 1],
-    [5, 0, 2, 3],
-    [0, 6, 1, 2],
-];
-
-const grid2 = [
-    [1, 3, 2],
-    [2, 1, 1], 
-];
-
 const grid3 = [
+    
     [10, 20, 0],
     [30, 10, 100],
     [10, 10, 10]
@@ -48,13 +34,11 @@ const grid3 = [
 
 const goldMine = (grid) => {
     let maxGoldCollected = grid[0][0];
-    
-    // console.log(grid.length, grid[0].length);
+    const visited = new Set();
     for(let m = 0; m < grid.length; m++) {
-        const visited = new Set();
+        
         const currentGold = calculateGold(grid, m, 0, visited);
 
-        console.log('for row = ', m, 'collectedGold is', {currentGold});
         if (currentGold > maxGoldCollected) {
             maxGoldCollected = currentGold;
         }
@@ -69,13 +53,16 @@ const calculateGold = (grid, row, col, visited) => {
     if (!rowInbounds || !colInbounds) return 0;
 
     let currentSpotGold = grid[row][col];
+    let rightGold = 0, rightUpGold = 0, rightDown = 0;
 
-    rightGold = calculateGold(grid, row, col + 1, visited); // go right ->
-    rightUpGold = calculateGold(grid, row - 1, col + 1, visited); // go right up /
-    rightDown = calculateGold(grid, row + 1, col + 1, visited); // go right down \
+    rightGold += calculateGold(grid, row, col + 1, visited); // go right ->
+    rightUpGold += calculateGold(grid, row - 1, col + 1, visited); // go right up /
+    rightDown += calculateGold(grid, row + 1, col + 1, visited); // go right down \x
+    
 
-    console.log({rightGold}, {rightUpGold}, {rightDown}, {currentSpotGold}, {row}, {col});
-    maxGold = currentSpotGold + Math.max(rightGold, Math.max(rightUpGold, rightDown));
+    var maxOFall = Math.max(rightGold, Math.max(rightUpGold, rightDown));
+
+    maxGold = currentSpotGold + maxOFall;
     
     return maxGold;
 }

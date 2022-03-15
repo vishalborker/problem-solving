@@ -1,8 +1,12 @@
 var grid = [
+    ['W', 'W', 'R', 'R', 'R'],
+    ['R', 'R', 'R', 'R', 'R'],
     ['W', 'W', 'R', 'R', 'G'],
-    ['W', 'Y', 'Y', 'R', 'G'],
+    ['W', 'G', 'G', 'G', 'Y'],
+    ['W', 'W', 'R', 'R', 'R'],
+    ['R', 'R', 'R', 'R', 'R'],
     ['W', 'W', 'R', 'R', 'G'],
-    ['W', 'W', 'G', 'R', 'Y']
+    ['W', 'G', 'G', 'R', 'Y'],
 ];
 
 /**
@@ -22,6 +26,7 @@ var findMax = function (grid) {
 
     for(i = 0; i< grid.length; i++) {
         for(j = 0; j< grid[0].length; j++) {
+            
             const { currentColor, count } = explore(grid, i, j, grid[i][j], visited);
 
             if (count > map[currentColor])
@@ -32,6 +37,7 @@ var findMax = function (grid) {
             }
         }   
     }
+    console.log({allColors: map});
     return maxSize;
 }
 
@@ -66,10 +72,16 @@ var explore = function (grid, row, col, currentColor, visited) {
     visited.add(key);
     var count = 1;
 
-    count += explore(grid, row, col + 1, currentColor, visited).count;
-    count += explore(grid, row, col - 1 , currentColor, visited).count;
-    count += explore(grid, row - 1, col, currentColor, visited).count;
-    count += explore(grid, row + 1, col, currentColor, visited).count;
+
+    // 0 ,  0
+    // 0 , 1
+    // -1, 0
+
+
+    count += explore(grid, row, col + 1, currentColor, visited).count; //right
+    count += explore(grid, row, col - 1 , currentColor, visited).count; 
+    count += explore(grid, row - 1, col, currentColor, visited).count; //top
+    count += explore(grid, row + 1, col, currentColor, visited).count; //bottom
 
     console.log({row, col}, {color: currentColor}, {gridrowcol: grid[row][col]});
 
