@@ -70,7 +70,7 @@ const e = require("cors");
     return charArr;
 };
 
-var Output = letterCombinations("296");
+var Output = letterCombinations("79235");
 // Input: digits = "23"
 // Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
 
@@ -79,3 +79,5 @@ var Output = letterCombinations("296");
 // "azn","azo","bwm","bwn","bwo","bxm","bxn","bxo","bym","byn","byo",
 // "bzm","bzn","bzo","cwm","cwn","cwo",
 // "cxm","cxn","cxo","cym","cyn","cyo","czm","czn","czo"]
+
+console.log(Output);
