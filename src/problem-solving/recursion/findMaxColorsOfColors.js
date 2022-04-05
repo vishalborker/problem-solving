@@ -51,6 +51,7 @@ var findMax = function (grid) {
  * @param {object} visited 
  * @returns 
  */
+
 var explore = function (grid, row, col, currentColor, visited) {
     var rowInBounds = 0 <= row  && row < grid.length;
     var colInBounds = 0 <= col && col < grid[0].length;
@@ -80,7 +81,7 @@ var explore = function (grid, row, col, currentColor, visited) {
 
 
     count += explore(grid, row, col + 1, currentColor, visited).count; //right
-    count += explore(grid, row, col - 1 , currentColor, visited).count; 
+    count += explore(grid, row, col - 1 , currentColor, visited).count; // left
     count += explore(grid, row - 1, col, currentColor, visited).count; //top
     count += explore(grid, row + 1, col, currentColor, visited).count; //bottom
 

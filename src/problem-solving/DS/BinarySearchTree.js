@@ -196,7 +196,7 @@ bst.postOrder(bst.root);
            /
           3  
 
-*/
+ */
 
 // console.log('Min Value in BST => ', bst.findMin());
 // console.log('Min Value in BST => ', bst.findMax());
